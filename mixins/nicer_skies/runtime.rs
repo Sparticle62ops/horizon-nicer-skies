@@ -29,7 +29,7 @@
 //! - `sky.star.starbox`       <- sky/star/Starbox.java
 //! - `seams`                  <- host seams (engine-side surface)
 
-pub use nicer_skies::*;
+pub use nicer_skies::{get_instance, logger, on_initialize_client, MOD_ID, NicerSkies};
 
 // ---- inlined: src/lib.rs ----
 pub mod nicer_skies {
@@ -42,6 +42,8 @@ pub mod nicer_skies {
 
 
     use std::sync::{Mutex, OnceLock};
+
+    use crate::{client_level_accessor, config, core, gui, mixin, seams, sky};
 
     /// java: NicerSkies implements ClientModInitializer. Static instance, config
     /// loaded from nicerskies.json, renderer constructed on init.
@@ -83,6 +85,14 @@ pub mod nicer_skies {
 }
 
 // ---- inlined: module tree ----
+pub mod client_level_accessor {
+    //! 1:1 port of ClientLevelAccessor: duck interface the ClientLevelMixin
+    //! implements to expose the biome zoom (hashed) seed.
+
+    pub trait ClientLevelAccessor {
+        fn nicer_skies_get_hashed_seed(&self) -> i64;
+    }
+}
 pub mod core {
     pub mod gradient {
         //! 1:1 port of Gradient: TreeMap<Double,int[]> gradient with floor/ceiling
