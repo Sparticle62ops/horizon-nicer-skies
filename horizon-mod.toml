@@ -1,0 +1,27 @@
+id = "nicer_skies"
+name = "nicer_skies"
+version = "1.5.2"
+description = """Exact 1:1 Rust translation of Nicer Skies by ZtereoHYPE
+(Modrinth nicer-skies, v1.5.2, LGPL-3.0-only). The upstream LGPL-3.0-only
+license and credit are carried.
+
+Pinned to Horizon f00125f61f794aaa3d4e950d301f353b35b6ee3d, horizon-mixins
+e59da9094f0c2fdda6c627fe9eff22dec6a906f0 and mod API 0.2; exact 1:1 Rust
+port tested against those revisions. The sky-render hook surface is tracked
+on horizon-rust/horizon#19623.
+"""
+authors = ["sparticle", "ZtereoHYPE"]
+api = "0.2"
+side = "both"
+capabilities = ["registries"]
+
+[native]
+game = "26.3"
+horizon = "f00125f61f794aaa3d4e950d301f353b35b6ee3d"
+mixins = "e59da9094f0c2fdda6c627fe9eff22dec6a906f0"
+
+[[native.module]]
+id = "nicer_skies_runtime"
+file = "src/lib.rs"
+name = "nicer_skies"
+source = "src/lib.rs"
