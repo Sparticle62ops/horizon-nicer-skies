@@ -9,7 +9,7 @@
 //! surface: the pinned mod API has no hook into the vanilla sky pass
 //! (buildStars / renderStars / renderSunMoonAndStars), so the ported
 //! renderer's draw path cannot be attached. See horizon-rust/horizon
-//! issue #19617 for the gap; the core compiles and its config math is
+//! issue #19623 for the gap; the core compiles and its config math is
 //! covered by tests.
 
 use mod_api::{RegistrationContext, Registrar, SettingSpec};
